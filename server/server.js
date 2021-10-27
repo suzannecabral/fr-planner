@@ -5,7 +5,7 @@ require("dotenv").config();
 const app = express();
 
 // rest endpoint
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
 	res.json({
 		data: "The server is running, better go catch it",
 	});
