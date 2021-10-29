@@ -1,8 +1,10 @@
 {
 	"workbench.colorCustomizations": {
+		// rgb(232, 204, 159)
+		// rgba(115, 29, 8, 1)
 		"activityBar.background": "#731d08",
-		"activityBar.inactiveForeground": "#e8cc9f",
-		"activityBar.activeForeground": "#e8cc9f",
+		"activityBar.inactiveForeground": "#a58f6d",
+		// "activityBar.foreground": "#ffffff",
 		"titleBar.activeBackground": "#731d08",
 		"titleBar.inactiveBackground": "#731d08",
 		"titleBar.activeForeground": "#e8cc9f",
