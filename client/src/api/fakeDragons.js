@@ -453,7 +453,7 @@ let fakeDragons = [
 	{
 		idx: "",
 		frid: 72858572,
-		name: "Unnamed",
+		name: "Ashlin",
 		img: "",
 		gender: "Female",
 		breed: "Skydancer",
@@ -502,7 +502,7 @@ let fakeDragons = [
 	{
 		idx: "",
 		frid: 72858573,
-		name: "Unnamed",
+		name: "Aibreanne",
 		img: "",
 		gender: "Female",
 		breed: "Spiral",
@@ -599,4 +599,4 @@ let fakeDragons = [
 	},
 ];
 
-export default fakeDragons;
+export { fakeDragons };
