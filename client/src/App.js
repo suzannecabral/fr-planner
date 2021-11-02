@@ -1,11 +1,19 @@
-import { Typography } from "@mui/material";
+import * as React from "react";
+// import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Typography, Box } from "@mui/material";
 import { LairView } from "./pages/LairView";
+// import { themeOptions } from "./generatorTheme";
+
+// const theme = createTheme(themeOptions);
+
 function App() {
 	return (
-		<div>
+		// <ThemeProvider theme={theme}>
+		<Box>
 			<Typography>Lair Planner</Typography>
 			<LairView />
-		</div>
+		</Box>
+		// </ThemeProvider>
 	);
 }
 
