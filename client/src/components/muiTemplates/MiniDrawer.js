@@ -132,10 +132,11 @@ export default function MiniDrawer(props) {
 				</DrawerHeader>
 				<Divider />
 				<List>
-					{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+					{/* TODO: Make this reusable, pass in list of available nav pages and their icons */}
+					{["View", "Add", "Pairs", "Calc"].map((text, index) => (
 						<ListItem button key={text}>
 							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+								<InboxIcon />
 							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItem>
@@ -146,7 +147,7 @@ export default function MiniDrawer(props) {
 					{["All mail", "Trash", "Spam"].map((text, index) => (
 						<ListItem button key={text}>
 							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+								<MailIcon />
 							</ListItemIcon>
 							<ListItemText primary={text} />
 						</ListItem>
@@ -154,7 +155,7 @@ export default function MiniDrawer(props) {
 				</List>
 			</Drawer>
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-				<DrawerHeader />
+				{/* <DrawerHeader /> */}
 				{contentWindow}
 			</Box>
 		</Box>
