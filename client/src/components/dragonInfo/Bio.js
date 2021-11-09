@@ -17,7 +17,7 @@ const Bio = (props) => {
 		>
 			{/* Name & Thumbnail */}
 			<Box sx={{ margin: "0 auto", textAlign: "center" }}>
-				<Link href={dragon.url}>
+				<Link href={dragon.url} target="blank">
 					<img width="100px" alt={dragon.name} src={dragon.minipicurl} />
 				</Link>
 				<Typography variant="body2">{dragon.name}</Typography>

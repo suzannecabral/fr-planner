@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { fakeDragons } from "../api/fakeDragons";
+// import { fakeDragons } from "../../api/fakeDragons";
 
 const BioDetails = (props) => {
 	const { dragon } = props;
