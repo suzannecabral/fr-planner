@@ -6,7 +6,6 @@ import { nanoid } from "nanoid";
 
 const LairView = (props) => {
 	const dragons = fakeDragons;
-	console.log(dragons);
 
 	return (
 		<Box

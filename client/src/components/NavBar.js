@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -85,10 +86,33 @@ const Drawer = styled(MuiDrawer, {
 	}),
 }));
 
-export default function MiniDrawer(props) {
+const NavBar = (props) => {
 	const theme = useTheme();
-	const { contentWindow, contentTitle } = props;
+	const { allPages, activePage, setActivePage } = props;
 	const [open, setOpen] = React.useState(true);
+
+	const sectionOne = allPages.slice(0, 5);
+	const sectionTwo = allPages.slice(5);
+
+	const makeNavItem = (page) => {
+		return (
+			<Link
+				to={page.route}
+				style={{ textDecoration: "none", color: "inherit" }}
+			>
+				<ListItem
+					button
+					key={page.shortTitle}
+					onClick={(e) => {
+						setActivePage(page);
+					}}
+				>
+					<ListItemIcon>{page.icon}</ListItemIcon>
+					<ListItemText primary={page.shortTitle} />
+				</ListItem>
+			</Link>
+		);
+	};
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -116,7 +140,7 @@ export default function MiniDrawer(props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						{contentTitle}
+						{activePage.title}
 					</Typography>
 				</Toolbar>
 			</AppBar>
@@ -132,32 +156,23 @@ export default function MiniDrawer(props) {
 				</DrawerHeader>
 				<Divider />
 				<List>
-					{/* TODO: Make this reusable, pass in list of available nav pages and their icons */}
-					{["View", "Add", "Pairs", "Calc", "Matchmaker"].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>
-								<InboxIcon />
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-					))}
+					{sectionOne.map((page) => {
+						return makeNavItem(page);
+					})}
 				</List>
 				<Divider />
 				<List>
-					{["Sale", "Bio"].map((text, index) => (
-						<ListItem button key={text}>
-							<ListItemIcon>
-								<MailIcon />
-							</ListItemIcon>
-							<ListItemText primary={text} />
-						</ListItem>
-					))}
+					{sectionTwo.map((page) => {
+						return makeNavItem(page);
+					})}
 				</List>
 			</Drawer>
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 				{/* <DrawerHeader /> */}
-				{contentWindow}
+				{activePage.component}
 			</Box>
 		</Box>
 	);
-}
+};
+
+export { NavBar };
