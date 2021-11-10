@@ -1,7 +1,6 @@
 import * as React from "react";
 // import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
-import { Outlet, Link, useRoutes, useParams } from "react-router-dom";
 import ButtonAppBar from "./components/muiTemplates/ButtonAppBar";
 import { NavBar } from "./components/NavBar";
 import { LairView } from "./pages/LairView";

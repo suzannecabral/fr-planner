@@ -15,7 +15,7 @@ const LairView = (props) => {
 			}}
 		>
 			{dragons.map((dragon) => {
-				return <Bio key={nanoid.generate} dragon={dragon} />;
+				return <Bio key={nanoid()} dragon={dragon} />;
 			})}
 		</Box>
 	);

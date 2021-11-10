@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Link, useNavigate, Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
+import { nanoid } from "nanoid";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -89,14 +90,6 @@ const NavBar = (props) => {
 	const { allPages, activePage, setActivePage } = props;
 	const [open, setOpen] = React.useState(true);
 
-	const routes = allPages.map((page) => {
-		return {
-			path: page.path,
-			element: page.component,
-			children: [],
-		};
-	});
-
 	const navigate = useNavigate();
 	const handleClick = (e, page) => {
 		navigate(page.route);
@@ -110,7 +103,7 @@ const NavBar = (props) => {
 		return (
 			<ListItem
 				button
-				key={page.shortTitle}
+				key={nanoid()}
 				onClick={(e) => {
 					handleClick(e, page);
 				}}
@@ -179,7 +172,13 @@ const NavBar = (props) => {
 				{/* {activePage.component} */}
 				<Routes>
 					{allPages.map((page) => {
-						return <Route path={page.route} element={page.component} />;
+						return (
+							<Route
+								key={nanoid()}
+								path={page.route}
+								element={page.component}
+							/>
+						);
 					})}
 				</Routes>
 			</Box>
