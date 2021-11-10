@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -16,8 +16,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 const drawerWidth = 180;
 
@@ -91,26 +89,35 @@ const NavBar = (props) => {
 	const { allPages, activePage, setActivePage } = props;
 	const [open, setOpen] = React.useState(true);
 
+	const routes = allPages.map((page) => {
+		return {
+			path: page.path,
+			element: page.component,
+			children: [],
+		};
+	});
+
+	const navigate = useNavigate();
+	const handleClick = (e, page) => {
+		navigate(page.route);
+		setActivePage(page);
+	};
+
 	const sectionOne = allPages.slice(0, 5);
 	const sectionTwo = allPages.slice(5);
 
 	const makeNavItem = (page) => {
 		return (
-			<Link
-				to={page.route}
-				style={{ textDecoration: "none", color: "inherit" }}
+			<ListItem
+				button
+				key={page.shortTitle}
+				onClick={(e) => {
+					handleClick(e, page);
+				}}
 			>
-				<ListItem
-					button
-					key={page.shortTitle}
-					onClick={(e) => {
-						setActivePage(page);
-					}}
-				>
-					<ListItemIcon>{page.icon}</ListItemIcon>
-					<ListItemText primary={page.shortTitle} />
-				</ListItem>
-			</Link>
+				<ListItemIcon>{page.icon}</ListItemIcon>
+				<ListItemText primary={page.shortTitle} />
+			</ListItem>
 		);
 	};
 
@@ -170,6 +177,8 @@ const NavBar = (props) => {
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 				{/* <DrawerHeader /> */}
 				{activePage.component}
+				{/* TODO: I think <Route> will go here? 
+							replacing activepage.component   */}
 			</Box>
 		</Box>
 	);

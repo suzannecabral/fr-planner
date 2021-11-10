@@ -1,7 +1,7 @@
 import * as React from "react";
 // import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box } from "@mui/material";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Link, useRoutes, useParams } from "react-router-dom";
 import ButtonAppBar from "./components/muiTemplates/ButtonAppBar";
 import { NavBar } from "./components/NavBar";
 import { LairView } from "./pages/LairView";
@@ -95,18 +95,6 @@ function App() {
 				activePage={activePage}
 				setActivePage={setActivePage}
 			/>
-			<Routes>
-				{allPages.map((page) => {
-					return `<Route path="${page.route}" component={page.component} />`;
-				})}
-				{/* <Route exact path="/" component={LairView} />
-				<Route path="/add" component={Uploader} />
-				<Route path="/pairs" component={PairView} />
-				<Route path="/color" component={ColorCalc} />
-				<Route path="/match" component={Match} />
-				<Route path="/sale" component={SaleCode} />
-				<Route path="/bio" component={BioCode} /> */}
-			</Routes>
 		</Box>
 		// </ThemeProvider>
 	);
