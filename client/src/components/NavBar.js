@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Route, Routes } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -176,9 +176,12 @@ const NavBar = (props) => {
 			</Drawer>
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 				{/* <DrawerHeader /> */}
-				{activePage.component}
-				{/* TODO: I think <Route> will go here? 
-							replacing activepage.component   */}
+				{/* {activePage.component} */}
+				<Routes>
+					{allPages.map((page) => {
+						return <Route path={page.route} element={page.component} />;
+					})}
+				</Routes>
 			</Box>
 		</Box>
 	);
