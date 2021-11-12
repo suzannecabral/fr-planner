@@ -20,7 +20,6 @@ import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import { AucLinks } from "./pages/AucLinks";
 import GavelIcon from "@mui/icons-material/Gavel";
 // import { themeOptions } from "./generatorTheme";
-import { DragonsContext } from "./context/DragonsContext";
 // const theme = createTheme(themeOptions);
 
 function App() {
@@ -83,22 +82,18 @@ function App() {
 		},
 	];
 
-	const [allDragons, setAllDragons] = React.useState([]);
 	const [activePage, setActivePage] = React.useState(allPages[0]);
-	const value = { allDragons, setAllDragons };
 
 	return (
 		// <ThemeProvider theme={theme}>
 		<Box sx={{ display: "flex", flexDirection: "column" }}>
-			<DragonsContext.Provider value={value}>
-				<ButtonAppBar title="View" />
-				{/* Pages are displayed in the NavBar component */}
-				<NavBar
-					allPages={allPages}
-					activePage={activePage}
-					setActivePage={setActivePage}
-				/>
-			</DragonsContext.Provider>
+			<ButtonAppBar title="View" />
+			{/* Pages are displayed in the NavBar component */}
+			<NavBar
+				allPages={allPages}
+				activePage={activePage}
+				setActivePage={setActivePage}
+			/>
 		</Box>
 		// </ThemeProvider>
 	);

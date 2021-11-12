@@ -17,6 +17,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import {
+	DragonsContext,
+	DragonsContextProvider,
+} from "../context/DragonsContext";
+import ContextRoute from "../context/ContextRoute";
+import ContextRouteElement from "../context/ContextRouteElement";
 
 const drawerWidth = 180;
 
@@ -176,6 +182,7 @@ const NavBar = (props) => {
 							<Route
 								key={nanoid()}
 								path={page.route}
+								// element={page.component}
 								element={page.component}
 							/>
 						);

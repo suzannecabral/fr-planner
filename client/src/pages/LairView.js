@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { fakeDragons } from "../api/fakeDragons";
-import { Bio } from "../components/dragonInfo/Bio";
+import { Bio } from "../components/Bio";
 import { nanoid } from "nanoid";
 
 const LairView = (props) => {

@@ -1,14 +1,12 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { CSVReader } from "react-papaparse";
-import { DragonsContext } from "../context/DragonsContext";
+import { UploaderSummary } from "../components/UploaderSummary";
 
 const Uploader = (props) => {
 	const [uploads, setUploads] = React.useState([]);
 	const [statusMsg, setStatusMsg] = React.useState("");
 	const [error, setError] = React.useState(false);
-
-	const { allDragons, setAllDragons } = React.useContext(DragonsContext);
 
 	const messages = {
 		handleError: "Import error",
@@ -72,29 +70,26 @@ const Uploader = (props) => {
 
 	return (
 		<Box>
-			<DragonsContext.Consumer>
-				<Typography variant="h5">Upload a CSV</Typography>
-				<Box sx={{ marginTop: 2 }}>
-					<CSVReader
-						onDrop={handleDrop}
-						onError={handleError}
-						onRemoveFile={handleRemoveFile}
-						addRemoveButton
-						noProgressBar
-						config={{
-							header: true,
-							transform: stringToNum,
-						}}
-					>
-						<Typography>Drop CSV file here or click to upload.</Typography>
-					</CSVReader>
-					{/* TODO display conditional success/error message */}
-					{/* fade success msg after x seconds */}
-					<Typography color={error ? "error" : "success"}>
-						{statusMsg}
-					</Typography>
-				</Box>
-			</DragonsContext.Consumer>
+			<Typography variant="h5">Upload a CSV</Typography>
+			<Box sx={{ marginTop: 2 }}>
+				<CSVReader
+					onDrop={handleDrop}
+					onError={handleError}
+					onRemoveFile={handleRemoveFile}
+					addRemoveButton
+					noProgressBar
+					config={{
+						header: true,
+						transform: stringToNum,
+					}}
+				>
+					<Typography>Drop CSV file here or click to upload.</Typography>
+				</CSVReader>
+				{/* TODO display conditional success/error message */}
+				{/* fade success msg after x seconds */}
+				<Typography color={error ? "error" : "success"}>{statusMsg}</Typography>
+			</Box>
+			<UploaderSummary />
 		</Box>
 	);
 };
