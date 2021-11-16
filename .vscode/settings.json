@@ -1,8 +1,8 @@
 {
 	"workbench.colorCustomizations": {
-		"activityBar.background": "#8d3f3f",
-		"titleBar.activeBackground": "#8d3f3f",
-		"titleBar.inactiveBackground": "#8d3f3f"
+		"activityBar.background": "#a1303099",
+		"titleBar.activeBackground": "#a1303099",
+		"titleBar.inactiveBackground": "#a1303099"
 	},
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
